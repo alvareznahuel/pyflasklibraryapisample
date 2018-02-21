@@ -102,3 +102,6 @@ ENV/
 
 # VS code
 .vscode/
+
+# Archivo de LOG.
+biblioserverlog.txt
