@@ -101,7 +101,7 @@ ENV/
 .mypy_cache/
 
 # VS code
-.vscode/
+.vscode/settings.json
 
 # Archivo de LOG.
 biblioserverlog.txt

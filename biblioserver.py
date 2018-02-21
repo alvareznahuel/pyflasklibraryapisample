@@ -6,6 +6,8 @@ from flask import Flask, url_for
 from flask import request
 from flask import json
 from flask import Response
+import time
+import os
 
 app = Flask(__name__)
 
@@ -62,5 +64,20 @@ def api_librosId(id):
     return resp
 
 if __name__ == '__main__':
+    # Inicio del DEBUG REMOTO.
+    if os.environ.get('PYTHON_REMOTE_DEBUG') == "ON":
+        import ptvsd
+        ptvsd.enable_attach("my_secret", address = ('0.0.0.0', 3000))
+        print("Esperando conexion del debbuger...")
+        ptvsd.wait_for_attach()
+        ptvsd.break_into_debugger()
+    # Fin inicio del DEBUG REMOTO       
     libros = []
     app.run(host= '0.0.0.0')
+
+# Finalizacion del DEBUG REMOTO.
+#if os.environ.get('PYTHON_REMOTE_DEBUG') == "ON":
+#    print("Esperando desconexion del debbuger...")
+#    while ptvsd.is_attached():
+#        time.sleep(0.5)
+# Fin finalizacion del DEBUG REMOTO.
