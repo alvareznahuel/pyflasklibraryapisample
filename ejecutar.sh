@@ -1,3 +1,3 @@
 #!/bin/bash
 # Ejecuta el script de python derivando la salida de errores a la salida estandar.
-python biblioserver.py 2>&1
+docker run -p 5001:5000 -t biblioserver 2>&1

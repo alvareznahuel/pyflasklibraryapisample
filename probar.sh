@@ -1,6 +1,6 @@
 #!/bin/bash
 SERVIDOR=localhost
-PUERTO=5000
+PUERTO=5001
 echo "== PRUEBAS GENERALES DEL SERVICIO ================================="
 echo ""
 echo "-- Recuperar la lista de libros. ----------------------------------"
