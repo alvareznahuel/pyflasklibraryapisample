@@ -1,3 +1,4 @@
+#!/bin/bash
 # Actualizamos la información de los repositorios de linux.
 sudo apt-get update
 # Instalamos la herramienta curl para pruebas, confirmando con yes cualquier pregunta.

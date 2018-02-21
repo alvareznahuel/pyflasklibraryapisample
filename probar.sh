@@ -1,3 +1,4 @@
+#!/bin/bash
 # Recuperar la lista de libros
 curl http://localhost:5000/biblioteca/libros
 # Recuperar el libro 1
