@@ -13,7 +13,7 @@ app = Flask(__name__)
 def api_libros():
     if request.method == 'GET':
         resp = Response(json.dumps(libros), status=200, mimetype='application/json')
-    else:
+    else: #POST
         if request.headers['Content-Type'] == 'application/json':
             if "id" in request.json.keys():
                 data = {
@@ -32,7 +32,7 @@ def api_libros():
                 resp = Response(json.dumps(data), status=400, mimetype='application/json')
             elif type(request.json["publicado"]) is not int:
                 data = {
-                    "error"  : "'publicado' debe ser númerico."
+                    "error"  : "'publicado' debe ser numerico."
                 }
                 respResponse(json.dumps(data), status=400, mimetype='application/json')
             else:
@@ -45,9 +45,21 @@ def api_libros():
             resp = Response(None, status=415, mimetype='application/json')
     return resp
 
-@app.route('/biblioteca/libros/<id>', methods = ['GET', 'PUT', 'DELETE']) #, 'PATCH'
+@app.route('/biblioteca/libros/<id>', methods = ['GET']) #, 'PATCH', 'PUT', 'DELETE'
 def api_librosId(id):
-    return 'Detalle del libro con Id=' + id + '\n'
+    if not id.isdigit():
+        data = {
+            "error"  : "El 'id' debe ser numerico."
+        }
+        resp = Response(json.dumps(data), status=400, mimetype='application/json')
+    else:
+        i = int(id)
+        if i==0 or i > len(libros):
+            resp = Response(None, status=404, mimetype='application/json')
+        else:
+            libro = libros[int(id)-1]
+            resp = Response(json.dumps(libro), status=400, mimetype='application/json')
+    return resp
 
 if __name__ == '__main__':
     libros = []

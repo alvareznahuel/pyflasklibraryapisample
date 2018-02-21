@@ -1,6 +1,10 @@
 # pyflasklibraryapisample
 
-API de ejemplo desarrollada con flask.
+API de ejemplo desarrollada con flask. A los fines del curso se desarrollaron solo los siguentes endpoint-verbos.
+
+GET /biblioteca/libros
+POST /biblioteca/libros
+GET /biblioteca/libros/<id>
 
 # Scripts para demostración del ejemplo
 
